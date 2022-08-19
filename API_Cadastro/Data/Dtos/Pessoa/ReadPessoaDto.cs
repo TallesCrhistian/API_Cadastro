@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace API_Cadastro.Models
+namespace API_Cadastro.Data.Dtos.Pessoa
 {
-    public class Pessoa
+    public class ReadPessoaDto
     {
         [Key]
         [Required]
@@ -15,5 +15,6 @@ namespace API_Cadastro.Models
         public string Email { get; set; }
         [Required]
         public string Telefone { get; set; }
+        public DateTime HoraDaConsulta { get; set; }
     }
 }

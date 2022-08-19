@@ -1,12 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace API_Cadastro.Models
+namespace API_Cadastro.Data.Dtos.Pessoa
 {
-    public class Pessoa
+    public class CreatePessoaDto
     {
-        [Key]
-        [Required]
-        public int Id { get; set; }
         [Required]
         public string Cpf { get; set; }
         [Required]
