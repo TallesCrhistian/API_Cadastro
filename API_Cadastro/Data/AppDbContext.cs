@@ -1,4 +1,5 @@
-﻿using API_Cadastro.Models;
+﻿using API_Cadastro.Data.Config;
+using API_Cadastro.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_Cadastro.Data
@@ -11,7 +12,11 @@ namespace API_Cadastro.Data
 
         }
 
-      
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new PessoaConfiguration());
+        }
+
 
         public DbSet<Pessoa> Pessoas { get; set; }
        
