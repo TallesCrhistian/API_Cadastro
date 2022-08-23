@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace API_Cadastro.Data.Dtos.Pessoa
 {
@@ -15,6 +16,11 @@ namespace API_Cadastro.Data.Dtos.Pessoa
         public string Email { get; set; }
         [Required]
         public string Telefone { get; set; }
+        
         public DateTime HoraDaConsulta { get; set; }
+
+
+
+
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using API_Cadastro.Data;
 using API_Cadastro.Models;
 using AutoMapper;
+using API_Cadastro.Data.Dtos.Pessoa;
 
 namespace API_Cadastro.Controllers
 {
@@ -39,26 +40,30 @@ namespace API_Cadastro.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Pessoa>> GetPessoa(int id)
         {
-           
-          if (_context.Pessoas == null)
+            Pessoa pessoa = _context.Pessoas.FirstOrDefault(pessoa => pessoa.Id == id);
+
+            if (_context.Pessoas == null)
           {
               return NotFound();
           }
-            var pessoa = await _context.Pessoas.FindAsync(id);
+            var pessoas = await _context.Pessoas.FindAsync(id);
 
             if (pessoa == null)
             {
                 return NotFound();
             }
+            ReadPessoaDto pessoaDto = _mapper.Map<ReadPessoaDto>(pessoa);
 
-            return pessoa;
+            return Ok(pessoaDto);
+            
         }
 
         // PUT: api/Pessoa/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPessoa(int id, Pessoa pessoa)
+        public async Task<IActionResult> PutPessoa(int id, UpdatePessoaDto pessoaDto)
         {
+            Pessoa pessoa = _context.Pessoas.FirstOrDefault(pessoa => pessoa.Id == id);
             if (id != pessoa.Id)
             {
                 return BadRequest();
@@ -68,6 +73,7 @@ namespace API_Cadastro.Controllers
 
             try
             {
+                _mapper.Map(pessoaDto, pessoa);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
@@ -88,12 +94,14 @@ namespace API_Cadastro.Controllers
         // POST: api/Pessoa
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Pessoa>> PostPessoa(Pessoa pessoa)
+        public async Task<ActionResult<Pessoa>> PostPessoa(CreatePessoaDto pessoadto)
         {
-          if (_context.Pessoas == null)
+
+            if (_context.Pessoas == null)
           {
               return Problem("Entity set 'AppDbContext.Pessoas'  is null.");
           }
+            Pessoa pessoa = _mapper.Map<Pessoa>(pessoadto);
             _context.Pessoas.Add(pessoa);
             await _context.SaveChangesAsync();
 
