@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  api_cadastro:
+    image: ${DOCKER_REGISTRY-}apicadastro
+    build:
+      context: .
+      dockerfile: API_Cadastro\Dockerfile
