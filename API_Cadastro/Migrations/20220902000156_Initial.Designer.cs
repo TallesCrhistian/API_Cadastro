@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_Cadastro.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220823164323_Config de Pessoa")]
-    partial class ConfigdePessoa
+    [Migration("20220902000156_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
