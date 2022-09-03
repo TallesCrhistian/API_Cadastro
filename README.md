@@ -13,4 +13,5 @@ git clone https://github.com/TallesCrhistian/API_Cadastro.git
 <li>Sql Server.</li>
 <li>Postman (criar e salvar solicitações HTTP e HTTPs, bem como ler suas respostas).</li>
 <li>Executar a Aplicação dentro do Visual Studio e utilizar o Postman para as solicitações Http e Https.</li>
+<li>Para consumo da API segue a Url: https://cadastrotca.azurewebsites.net/<li>
 </ul>
