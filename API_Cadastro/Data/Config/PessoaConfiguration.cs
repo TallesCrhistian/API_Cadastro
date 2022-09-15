@@ -40,11 +40,7 @@ namespace API_Cadastro.Data.Config
                .HasColumnType("varchar(15)")
                .IsRequired();
 
-            builder
-                .Property<DateTime>("last_update")
-                .HasColumnType("datetime")
-                .HasDefaultValueSql("getdate()")
-                .IsRequired();
+            
         }
     }
 }

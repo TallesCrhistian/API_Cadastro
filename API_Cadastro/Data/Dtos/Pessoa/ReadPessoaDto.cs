@@ -17,7 +17,7 @@ namespace API_Cadastro.Data.Dtos.Pessoa
         [Required]
         public string Telefone { get; set; }
         
-        public DateTime HoraDaConsulta { get; set; }
+       
 
 
 
